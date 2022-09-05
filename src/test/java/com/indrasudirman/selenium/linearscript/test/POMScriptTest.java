@@ -28,28 +28,12 @@ public class POMScriptTest {
 
         // Navigate to login page
         HomePage homaPage = new HomePage(browser);
-        homaPage.navigateToLoginPage(); //Fluid syntax
-
-        // Log in
-        LoginPage loginPage = new LoginPage(browser);
-        loginPage.login("petejenkins@test.com", "Password1234");
-
-        // Navigate back to home page
-        UserAccountPage userAccountPage = new UserAccountPage(browser);
-        userAccountPage.navigateToHomePage();
-
-
-        // Select the first product
-        homaPage.selectProduct(0);
-
-
-        // Add 1 item to the shopping cart
-        ProductDetailsPage productDetailsPage = new ProductDetailsPage(browser);
-        productDetailsPage.addProductToShoppingCart();
-
-        // Proceed to checkout
-        AddToCartConfirmationPopUp confirmationPopUp = new AddToCartConfirmationPopUp(browser);
-        confirmationPopUp.proceedToCheckout();
+        homaPage.navigateToLoginPage()
+                .login("petejenkins@test.com", "Password1234")
+                .navigateToHomePage()
+                .selectFirstProduct()
+                .addProductToShoppingCart()
+                .proceedToCheckout();
 
         // Verify we have 1 item in the shopping cart
         ShoppingCartSummaryPage shoppingCartSummaryPage = new ShoppingCartSummaryPage(browser);
