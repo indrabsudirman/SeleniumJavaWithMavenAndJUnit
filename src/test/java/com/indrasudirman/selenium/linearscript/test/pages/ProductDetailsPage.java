@@ -15,7 +15,7 @@ public class ProductDetailsPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButtonLocator));
     }
 
-    public void clickAddToCartButton() {
+    public void addProductToShoppingCart() {
         wait.until(ExpectedConditions.elementToBeClickable(addToCartButtonLocator));
         WebElement addToCartButton = browser.findElement(addToCartButtonLocator);
         addToCartButton.click();

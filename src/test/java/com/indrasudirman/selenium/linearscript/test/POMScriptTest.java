@@ -20,7 +20,7 @@ public class POMScriptTest {
         // Initialization
         System.setProperty("webdriver.chrome.driver", "/home/koinworks/selenium_lib/chromedriver_linux64/chromedriver");
         WebDriver browser = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(browser, Duration.ofSeconds(10));
         browser.manage().window().maximize();
 
         // Go to website
@@ -28,26 +28,28 @@ public class POMScriptTest {
 
         // Navigate to login page
         HomePage homaPage = new HomePage(browser);
-        homaPage.clickSignInButton() //Fluid syntax
-                .setEmailAddress("petejenkins@test.com")
-                .setPassword("Password1234") //Fluid syntax
-                .clickSignInButton() //Fluid syntax
-                .navigateToHomePage(); //Fluid syntax
+        homaPage.navigateToLoginPage(); //Fluid syntax
 
+        // Log in
+        LoginPage loginPage = new LoginPage(browser);
+        loginPage.login("petejenkins@test.com", "Password1234");
+
+        // Navigate back to home page
+        UserAccountPage userAccountPage = new UserAccountPage(browser);
+        userAccountPage.navigateToHomePage();
 
 
         // Select the first product
-        List<WebElement> productNameLinks = homaPage.getProductNameLinks();
-        productNameLinks.get(1).click();
+        homaPage.selectProduct(0);
 
 
         // Add 1 item to the shopping cart
         ProductDetailsPage productDetailsPage = new ProductDetailsPage(browser);
-        productDetailsPage.clickAddToCartButton();
+        productDetailsPage.addProductToShoppingCart();
 
         // Proceed to checkout
         AddToCartConfirmationPopUp confirmationPopUp = new AddToCartConfirmationPopUp(browser);
-        confirmationPopUp.clickProceedToCheckoutButton();
+        confirmationPopUp.proceedToCheckout();
 
         // Verify we have 1 item in the shopping cart
         ShoppingCartSummaryPage shoppingCartSummaryPage = new ShoppingCartSummaryPage(browser);
