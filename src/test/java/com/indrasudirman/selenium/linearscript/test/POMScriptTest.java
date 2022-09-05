@@ -28,19 +28,12 @@ public class POMScriptTest {
 
         // Navigate to login page
         HomePage homaPage = new HomePage(browser);
-        homaPage.clickSignInButton();
+        homaPage.clickSignInButton() //Fluid syntax
+                .setEmailAddress("petejenkins@test.com")
+                .setPassword("Password1234") //Fluid syntax
+                .clickSignInButton() //Fluid syntax
+                .navigateToHomePage(); //Fluid syntax
 
-        // Log in use Page Factory Sample
-//        PageFactorySampleInLoginPage loginPage = new PageFactorySampleInLoginPage(browser);
-        // Log in
-        LoginPage loginPage = new LoginPage(browser);
-        loginPage.setEmailAddress("petejenkins@test.com");
-        loginPage.setPassword("Password1234");
-        loginPage.clickSignInButton();
-
-        // Navigate back to home page
-        UserAccountPage userAccountPage = new UserAccountPage(browser);
-        userAccountPage.navigateToHomePage();
 
 
         // Select the first product

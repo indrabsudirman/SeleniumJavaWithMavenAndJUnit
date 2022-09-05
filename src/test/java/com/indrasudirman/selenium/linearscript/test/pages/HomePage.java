@@ -18,10 +18,11 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(signInLinkLocator));
     }
 
-    public void clickSignInButton() {
+    public LoginPage clickSignInButton() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(signInLinkLocator));
         WebElement signInLink = browser.findElement(signInLinkLocator);
         signInLink.click();
+        return new LoginPage(browser);
     }
 
     public List<WebElement> getProductNameLinks() {
