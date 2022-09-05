@@ -7,15 +7,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class UserAccountPage extends BasePage {
 
+    private By homeLinkLocator = By.cssSelector("a.home");
+
     public UserAccountPage(WebDriver browser) {
         super(browser);
         // Wait for page load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='myaccount-link-list']//a[contains(@href,'controller=history')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
     }
 
     public void navigateToHomePage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='myaccount-link-list']//a[contains(@href,'controller=history')]")));
-        WebElement homeLink = browser.findElement(By.cssSelector("a.home"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
+        WebElement homeLink = browser.findElement(homeLinkLocator);
         homeLink.click();
     }
 }

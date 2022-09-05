@@ -6,15 +6,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ShoppingCartSummaryPage extends BasePage {
 
+    private By productQuantityLocator = By.id("summary_products_quantity");
+
     public ShoppingCartSummaryPage(WebDriver browser) {
         super(browser);
         // Wait for page load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("summary_products_quantity")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productQuantityLocator));
     }
 
     public int getQuantity() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("summary_products_quantity")));
-        String numProductsLabelText = browser.findElement(By.id("summary_products_quantity")).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productQuantityLocator));
+        String numProductsLabelText = browser.findElement(productQuantityLocator).getText();
         int spaceLocation = numProductsLabelText.indexOf(" ");
         int numProducts = Integer.parseInt(numProductsLabelText.substring(0, spaceLocation));
         return numProducts;

@@ -7,29 +7,33 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
+    private By emailAddressLocator = By.id("email");
+    private By passwordTextBoxLocator = By.id("passwd");
+    private By signInButtonLocator = By.id("SubmitLogin");
+
     public LoginPage(WebDriver browser) {
         super(browser);
         // Wait for page load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(emailAddressLocator));
     }
 
-    public void setEmailAddress(String emailAddress){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
-        WebElement emailTextBox = browser.findElement(By.id("email"));
+    public void setEmailAddress(String emailAddress) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(emailAddressLocator));
+        WebElement emailTextBox = browser.findElement(emailAddressLocator);
         emailTextBox.clear();
         emailTextBox.sendKeys(emailAddress);
     }
 
     public void setPassword(String password) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("passwd")));
-        WebElement passwordTextBox = browser.findElement(By.id("passwd"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordTextBoxLocator));
+        WebElement passwordTextBox = browser.findElement(passwordTextBoxLocator);
         passwordTextBox.clear();
         passwordTextBox.sendKeys(password);
     }
 
     public void clickSignInButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("SubmitLogin")));
-        WebElement signInButton = browser.findElement(By.id("SubmitLogin"));
+        wait.until(ExpectedConditions.elementToBeClickable(signInButtonLocator));
+        WebElement signInButton = browser.findElement(signInButtonLocator);
         signInButton.click();
     }
 }

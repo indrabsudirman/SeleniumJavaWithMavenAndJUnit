@@ -2,11 +2,9 @@ package com.indrasudirman.selenium.linearscript.test;
 
 import com.indrasudirman.selenium.linearscript.test.pages.*;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,6 +30,8 @@ public class POMScriptTest {
         HomePage homaPage = new HomePage(browser);
         homaPage.clickSignInButton();
 
+        // Log in use Page Factory Sample
+//        PageFactorySampleInLoginPage loginPage = new PageFactorySampleInLoginPage(browser);
         // Log in
         LoginPage loginPage = new LoginPage(browser);
         loginPage.setEmailAddress("petejenkins@test.com");

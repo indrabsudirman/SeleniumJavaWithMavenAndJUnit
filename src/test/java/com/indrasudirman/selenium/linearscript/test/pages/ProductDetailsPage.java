@@ -7,15 +7,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductDetailsPage extends BasePage {
 
+    private By addToCartButtonLocator = By.xpath("//p[@id='add_to_cart']/button");
+
     public ProductDetailsPage(WebDriver browser) {
         super(browser);
         // Wait for page load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@id='add_to_cart']/button")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButtonLocator));
     }
 
     public void clickAddToCartButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@id='add_to_cart']/button")));
-        WebElement addToCartButton = browser.findElement(By.xpath("//p[@id='add_to_cart']/button"));
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartButtonLocator));
+        WebElement addToCartButton = browser.findElement(addToCartButtonLocator);
         addToCartButton.click();
     }
 }
