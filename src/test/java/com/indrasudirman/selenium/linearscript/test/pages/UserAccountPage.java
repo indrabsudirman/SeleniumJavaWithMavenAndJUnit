@@ -15,10 +15,5 @@ public class UserAccountPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
     }
 
-    public HomePage navigateToHomePage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
-        WebElement homeLink = browser.findElement(homeLinkLocator);
-        homeLink.click();
-        return new HomePage(browser);
-    }
+
 }

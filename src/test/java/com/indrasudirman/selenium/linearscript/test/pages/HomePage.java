@@ -9,7 +9,6 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
-    private By signInLinkLocator = By.cssSelector("a.login");
     private By productLinksLocator = By.cssSelector("a.product-name");
     private By contactUsLocator = By.cssSelector("#contact-link > a");
 
@@ -29,12 +28,7 @@ public class HomePage extends BasePage {
         return new ProductDetailsPage(browser);
     }
 
-    public LoginPage navigateToLoginPage() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(signInLinkLocator));
-        WebElement signInLink = browser.findElement(signInLinkLocator);
-        signInLink.click();
-        return new LoginPage(browser);
-    }
+
 
     public List<WebElement> getProductNameLinks() {
         wait.until(ExpectedConditions.elementToBeClickable(productLinksLocator));
