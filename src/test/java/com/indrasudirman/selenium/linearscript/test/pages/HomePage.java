@@ -18,9 +18,10 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(contactUsLocator));
     }
 
-    public void selectProduct(int productIndex) {
+    public ProductDetailsPage selectProduct(int productIndex) {
         List<WebElement> productNameLinks = getProductNameLinks();
         productNameLinks.get(productIndex).click();
+        return new ProductDetailsPage(browser);
     }
 
     public ProductDetailsPage selectFirstProduct() {
