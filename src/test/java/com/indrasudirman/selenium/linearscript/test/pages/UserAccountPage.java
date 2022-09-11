@@ -12,7 +12,8 @@ public class UserAccountPage extends BasePage {
     public UserAccountPage(WebDriver browser) {
         super(browser);
         // Wait for page load
-        wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(homeLinkLocator));
+        waitForPageTitle("My account - ");
     }
 
 

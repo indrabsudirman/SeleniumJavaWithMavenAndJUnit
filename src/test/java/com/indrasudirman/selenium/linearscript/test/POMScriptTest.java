@@ -30,7 +30,7 @@ public class POMScriptTest {
         // Navigate to login page
         HomePage homaPage = new HomePage(browser);
         homaPage.navigateToLoginPage()
-                .login("petejenkins@test.com", "Password1234")
+                .login("petejenkins@test.com", "Password12341")
                 .navigateToHomePage()
                 .selectFirstProduct()
                 .addProductToShoppingCart()
@@ -50,7 +50,7 @@ public class POMScriptTest {
         double totalAmount = shoppingCartSummaryPage.getTotalPrice();
         assertEquals(totalItemAmounts, totalAmount, "Total value of items does not equal total quoted");
 
-        // Close the browser
+        // Close the browser this test
         browser.close();
     }
 }

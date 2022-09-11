@@ -21,6 +21,10 @@ public class BasePage {
         wait = new WebDriverWait(browser, Duration.ofSeconds(5));
     }
 
+    protected void waitForPageTitle (String pageTitle) {
+        wait.until(ExpectedConditions.titleContains(pageTitle));
+    }
+
     public LoginPage navigateToLoginPage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(signInLinkLocator));
         WebElement signInLink = browser.findElement(signInLinkLocator);
